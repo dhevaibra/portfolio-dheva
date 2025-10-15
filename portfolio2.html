@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Portfolio Lengkap - Dheva Ibra</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+
+    <style>
+      /* Custom utility classes matching the index.html design */
+      :root {
+        --primary-color: #2563eb; /* Blue-600 */
+        --text-color: #1f2937; /* Gray-800 */
+      }
+
+      body {
+        font-family: "Inter", sans-serif;
+        background-color: #fefefe; /* Near-white background for an airy feel */
+        color: #1f2937; /* Darker text for readability */
+      }
+
+      /* Modern, subtle shadow for 'floating' elements (Apple-like) */
+      .soft-shadow {
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      }
+
+      /* Custom button hover effect - matches index.html */
+      .btn-outline-custom {
+        transition: all 0.3s ease;
+      }
+      .btn-outline-custom:hover {
+        background-color: #1f2937; /* Dark background on hover */
+        color: #fff;
+        border-color: #1f2937;
+      }
+
+      /* Image hover effect for gallery items - matches index.html principle */
+      .gallery-item-hover {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+      .gallery-item-hover:hover {
+        transform: scale(1.02);
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+      }
+
+      /* NAV BAR: Custom Hover Underline Effect */
+      .nav-link-custom {
+        position: relative;
+        padding-bottom: 2px;
+        transition: color 0.3s ease;
+      }
+      .nav-link-custom::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        width: 0;
+        height: 2px;
+        background-color: var(--primary-color);
+        transition: width 0.3s ease, left 0.3s ease;
+      }
+      .nav-link-custom:hover::after,
+      .nav-link-custom.active::after {
+        width: 100%;
+        left: 0;
+      }
+      .nav-link-custom.active {
+        color: var(--primary-color);
+      }
+      /* Smooth mobile menu transition */
+      #mobile-menu {
+        transition: max-height 0.3s ease-in-out;
+      }
+    </style>
+  </head>
+
+  <body>
+    <nav
+      id="main-navbar"
+      class="fixed top-0 left-0 right-0 z-50 bg-white/70 backdrop-blur-md soft-shadow transition-all duration-300"
+    >
+      <div
+        class="container mx-auto px-6 py-4 flex justify-between items-center"
+      >
+        <a
+          href="index.html"
+          class="text-2xl font-extrabold tracking-wider text-gray-900 transition-colors hover:text-blue-600"
+        >
+          Dheva <span class="text-blue-600">Ibra</span>
+        </a>
+
+        <button
+          id="mobile-menu-button"
+          class="lg:hidden p-2 text-gray-700 hover:bg-gray-100 rounded-lg transition-colors duration-200"
+        >
+          <svg
+            id="menu-icon"
+            class="w-6 h-6"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M4 6h16M4 12h16M4 18h16"
+            ></path>
+          </svg>
+          <svg
+            id="close-icon"
+            class="w-6 h-6 hidden"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M6 18L18 6M6 6l12 12"
+            ></path>
+          </svg>
+        </button>
+
+        <div class="hidden lg:flex space-x-8 items-center">
+          <a
+            href="index.html#home"
+            class="nav-link-custom text-gray-700 font-medium"
+            >Home</a
+          >
+          <a
+            href="index.html#about"
+            class="nav-link-custom text-gray-700 font-medium"
+            >Tentang</a
+          >
+          <a href="portfolio.html" class="nav-link-custom font-medium active"
+            >Portfolio</a
+          >
+          <a
+            href="index.html#contact"
+            class="nav-link-custom text-gray-700 font-medium"
+            >Kontak</a
+          >
+        </div>
+      </div>
+
+      <div
+        id="mobile-menu"
+        class="lg:hidden absolute w-full bg-white/95 backdrop-blur-sm soft-shadow overflow-hidden max-h-0"
+      >
+        <div class="flex flex-col space-y-1 p-4">
+          <a
+            href="index.html#home"
+            class="block py-2 px-3 text-gray-800 hover:text-blue-600 font-medium transition-colors rounded-lg hover:bg-gray-50"
+            >Home</a
+          >
+          <a
+            href="index.html#about"
+            class="block py-2 px-3 text-gray-800 hover:text-blue-600 font-medium transition-colors rounded-lg hover:bg-gray-50"
+            >Tentang</a
+          >
+          <a
+            href="portfolio.html"
+            class="block py-2 px-3 text-blue-600 font-bold transition-colors rounded-lg bg-gray-50"
+            >Portfolio</a
+          >
+          <a
+            href="index.html#contact"
+            class="block py-2 px-3 text-gray-800 hover:text-blue-600 font-medium transition-colors rounded-lg hover:bg-gray-50"
+            >Kontak</a
+          >
+        </div>
+      </div>
+    </nav>
+    <header
+      class="pt-32 pb-20 md:pt-40 md:pb-32 text-white relative overflow-hidden"
+      data-aos="fade-down"
+    >
+      <div
+        class="absolute inset-0 bg-cover bg-center"
+        style="background-image: url('cover web 8.png')"
+      ></div>
+      <div class="absolute inset-0 bg-gray-900/70"></div>
+
+      <div class="container mx-auto px-6 max-w-4xl text-center relative z-10">
+        <h1
+          class="text-5xl md:text-6xl font-extrabold leading-tight tracking-tighter mb-4"
+        >
+          Detail Portfolio
+        </h1>
+        <p class="text-xl font-light opacity-90 mx-auto">
+          Desain berikut merupakan dummy project untuk sebuah daycare anak anak
+          bernama <strong>Gemilang Ceria Daycare</strong>. Desain yang saya buat
+          di sini berfokus pada tampilan feed Instagram.
+        </p>
+      </div>
+    </header>
+
+    <section class="py-20 md:py-32 bg-gray-50">
+      <div class="container mx-auto px-6 max-w-7xl">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div data-aos="fade-up">
+            <img
+              src="detail2/tempat terbaik.png"
+              class="w-full h-auto object-cover rounded-xl soft-shadow gallery-item-hover"
+              alt="Design 1"
+            />
+          </div>
+
+          <div data-aos="fade-up" data-aos-delay="100">
+            <img
+              src="detail2/visimisi.png"
+              class="w-full h-auto object-cover rounded-xl soft-shadow gallery-item-hover"
+              alt="Design 2"
+            />
+          </div>
+
+          <div data-aos="fade-up" data-aos-delay="200">
+            <img
+              src="detail2/program unggulan.png"
+              class="w-full h-auto object-cover rounded-xl soft-shadow gallery-item-hover"
+              alt="Design 3"
+            />
+          </div>
+
+          <div data-aos="fade-up">
+            <img
+              src="detail2/harianak.png"
+              class="w-full h-auto object-cover rounded-xl soft-shadow gallery-item-hover"
+              alt="Design 4"
+            />
+          </div>
+
+          <div data-aos="fade-up" data-aos-delay="100">
+            <img
+              src="detail2/metode.png"
+              class="w-full h-auto object-cover rounded-xl soft-shadow gallery-item-hover"
+              alt="Design 5"
+            />
+          </div>
+
+          <div data-aos="fade-up" data-aos-delay="200">
+            <img
+              src="detail2/aktivitas.png"
+              class="w-full h-auto object-cover rounded-xl soft-shadow gallery-item-hover"
+              alt="Design 6"
+            />
+          </div>
+
+          <div data-aos="fade-up">
+            <img
+              src="detail2/activity2.png"
+              class="w-full h-auto object-cover rounded-xl soft-shadow gallery-item-hover"
+              alt="Design 6"
+            />
+          </div>
+
+          <div data-aos="fade-up" data-aos-delay="100">
+            <img
+              src="detail2/rutinitas ceria.png"
+              class="w-full h-auto object-cover rounded-xl soft-shadow gallery-item-hover"
+              alt="Design 6"
+            />
+          </div>
+
+          <div data-aos="fade-up" data-aos-delay="200">
+            <img
+              src="detail2/Frame 140.png"
+              class="w-full h-auto object-cover rounded-xl soft-shadow gallery-item-hover"
+              alt="Design 6"
+            />
+          </div>
+        </div>
+
+        <div class="text-center mt-16" data-aos="fade-up">
+          <a
+            href="index.html#portfolio"
+            class="inline-block px-8 py-3 border border-gray-900 text-gray-900 rounded-lg font-semibold transition-colors duration-300 hover:bg-gray-900 hover:text-white btn-outline-custom"
+          >
+            Lihat Desain Lainnya
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <footer class="bg-gray-800 py-6">
+      <div class="container mx-auto px-6 text-center text-gray-400">
+        <p>&copy; 2025 Dheva Ibra. All Rights Reserved.</p>
+      </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+      AOS.init({
+        duration: 800, // animation duration
+        once: true, // whether animation should happen only once - default
+      });
+
+      // --- JavaScript for Navbar Interactivity ---
+
+      const mobileMenuButton = document.getElementById("mobile-menu-button");
+      const mobileMenu = document.getElementById("mobile-menu");
+      const menuIcon = document.getElementById("menu-icon");
+      const closeIcon = document.getElementById("close-icon");
+
+      // 1. Mobile Menu Toggle
+      mobileMenuButton.addEventListener("click", () => {
+        const isMenuOpen = mobileMenu.classList.contains("max-h-80");
+
+        if (isMenuOpen) {
+          mobileMenu.classList.remove("max-h-80");
+          mobileMenu.classList.add("max-h-0");
+          menuIcon.classList.remove("hidden");
+          closeIcon.classList.add("hidden");
+        } else {
+          mobileMenu.classList.remove("max-h-0");
+          mobileMenu.classList.add("max-h-80"); // Sufficient height for the menu content
+          menuIcon.classList.add("hidden");
+          closeIcon.classList.remove("hidden");
+        }
+      });
+
+      // Close mobile menu when a link is clicked
+      mobileMenu.querySelectorAll("a").forEach((link) => {
+        link.addEventListener("click", () => {
+          mobileMenu.classList.remove("max-h-80");
+          mobileMenu.classList.add("max-h-0");
+          menuIcon.classList.remove("hidden");
+          closeIcon.classList.add("hidden");
+        });
+      });
+    </script>
+  </body>
+</html>

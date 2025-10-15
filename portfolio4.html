@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Portfolio Lengkap - Dheva Ibra</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+
+    <style>
+      /* Custom utility classes matching the unified design */
+      :root {
+        --primary-color: #2563eb; /* Professional Blue (Blue-600) */
+        --background-light: #f9faff; /* Very light blue-tinted background */
+        --text-color: #1f2937; /* Gray-800 */
+      }
+
+      body {
+        font-family: "Inter", sans-serif;
+        background-color: var(--background-light);
+        color: #1f2937;
+      }
+
+      /* Enhanced 'floating' shadow for a 3D effect */
+      .premium-shadow {
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+        transition: box-shadow 0.4s ease-in-out;
+      }
+
+      /* Custom button style (consistent with previous designs) */
+      .btn-outline-custom {
+        transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+        border-width: 2px;
+      }
+      .btn-outline-custom:hover {
+        background-color: #1f2937;
+        color: #fff;
+        border-color: #1f2937;
+        transform: translateY(-3px); /* Noticeable lift */
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+      }
+
+      /* Gallery Item: The Core of the Advanced Aesthetic */
+      .gallery-item {
+        transition: transform 0.5s cubic-bezier(0.1, 0.9, 0.2, 1),
+          box-shadow 0.5s ease;
+        overflow: hidden;
+        background: white; /* Ensures items stand out on the light background */
+      }
+
+      /* Image inside the item: Zoom In and Subtle Lift on Hover */
+      .gallery-item-img {
+        transition: transform 0.6s cubic-bezier(0.1, 0.9, 0.2, 1);
+        transform: scale(1);
+      }
+
+      .gallery-item:hover {
+        transform: translateY(-8px); /* **Signature "Floating" Effect** */
+        box-shadow: 0 30px 60px rgba(0, 0, 0, 0.25); /* Intense shadow when floating */
+      }
+
+      .gallery-item:hover .gallery-item-img {
+        transform: scale(
+          1.08
+        ); /* Aggressive zoom on image inside the floating container */
+      }
+
+      /* --- NAV BAR: Custom Underline & Active State --- */
+      .nav-link-custom {
+        position: relative;
+        padding-bottom: 2px;
+        transition: color 0.3s ease;
+      }
+      .nav-link-custom::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        width: 0;
+        height: 2px;
+        background-color: var(--primary-color);
+        transition: width 0.3s ease, left 0.3s ease;
+      }
+      /* Hover and Active State CSS */
+      .nav-link-custom:hover::after,
+      .nav-link-custom.active::after {
+        width: 100%;
+        left: 0;
+      }
+      .nav-link-custom.active {
+        color: var(--primary-color);
+      }
+      /* Smooth mobile menu transition */
+      #mobile-menu {
+        transition: max-height 0.3s ease-in-out;
+      }
+    </style>
+  </head>
+
+  <body>
+    <nav
+      id="main-navbar"
+      class="fixed top-0 left-0 right-0 z-50 bg-white/70 backdrop-blur-md premium-shadow transition-all duration-300"
+    >
+      <div
+        class="container mx-auto px-6 py-4 flex justify-between items-center"
+      >
+        <a
+          href="index.html"
+          class="text-2xl font-extrabold tracking-wider text-gray-900 transition-colors hover:text-blue-600"
+        >
+          Dheva <span class="text-blue-600">Ibra</span>
+        </a>
+
+        <button
+          id="mobile-menu-button"
+          class="lg:hidden p-2 text-gray-700 hover:bg-gray-100 rounded-lg transition-colors duration-200"
+        >
+          <svg
+            id="menu-icon"
+            class="w-6 h-6"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M4 6h16M4 12h16M4 18h16"
+            ></path>
+          </svg>
+          <svg
+            id="close-icon"
+            class="w-6 h-6 hidden"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M6 18L18 6M6 6l12 12"
+            ></path>
+          </svg>
+        </button>
+
+        <div class="hidden lg:flex space-x-8 items-center">
+          <a
+            href="index.html#home"
+            class="nav-link-custom text-gray-700 font-medium"
+            >Home</a
+          >
+          <a
+            href="index.html#about"
+            class="nav-link-custom text-gray-700 font-medium"
+            >Tentang</a
+          >
+          <a href="portfolio.html" class="nav-link-custom font-medium active"
+            >Portfolio</a
+          >
+          <a
+            href="index.html#contact"
+            class="nav-link-custom text-gray-700 font-medium"
+            >Kontak</a
+          >
+        </div>
+      </div>
+
+      <div
+        id="mobile-menu"
+        class="lg:hidden absolute w-full bg-white/95 backdrop-blur-sm premium-shadow overflow-hidden max-h-0"
+      >
+        <div class="flex flex-col space-y-1 p-4">
+          <a
+            href="index.html#home"
+            class="block py-2 px-3 text-gray-800 hover:text-blue-600 font-medium transition-colors rounded-lg hover:bg-gray-50"
+            >Home</a
+          >
+          <a
+            href="index.html#about"
+            class="block py-2 px-3 text-gray-800 hover:text-blue-600 font-medium transition-colors rounded-lg hover:bg-gray-50"
+            >Tentang</a
+          >
+          <a
+            href="portfolio.html"
+            class="block py-2 px-3 text-blue-600 font-bold transition-colors rounded-lg bg-gray-50"
+            >Portfolio</a
+          >
+          <a
+            href="index.html#contact"
+            class="block py-2 px-3 text-gray-800 hover:text-blue-600 font-medium transition-colors rounded-lg hover:bg-gray-50"
+            >Kontak</a
+          >
+        </div>
+      </div>
+    </nav>
+    <header
+      class="pt-32 pb-20 md:pt-40 md:pb-32 text-white relative overflow-hidden"
+      data-aos="zoom-in"
+      data-aos-duration="1200"
+    >
+      <div
+        class="absolute inset-0 bg-cover bg-center"
+        style="background-image: url('cover web 10.png')"
+      ></div>
+      <div
+        class="absolute inset-0 bg-gradient-to-t from-gray-900/60 to-gray-900/80"
+      ></div>
+
+      <div class="container mx-auto px-6 max-w-4xl text-center relative z-10">
+        <h1
+          class="text-5xl md:text-6xl font-extrabold leading-tight tracking-tighter mb-4"
+        >
+          Detail Portfolio
+        </h1>
+        <p class="text-xl font-light opacity-90 mx-auto">
+          Desain berikut adalah dummy project bertema sport yang terinspirasi
+          dari
+          <strong>Timnas Jepang</strong>. Fokus utama proyek ini adalah
+          pembuatan
+          <strong
+            >poster matchday, starting line-up, dan berbagai konten grafis
+            bernuansa sepak bola</strong
+          >.
+        </p>
+      </div>
+    </header>
+
+    <section class="py-20 md:py-32 bg-gray-50/70">
+      <div class="container mx-auto px-6 max-w-7xl">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div data-aos="fade-up" data-aos-delay="0">
+            <div class="gallery-item rounded-xl premium-shadow">
+              <img
+                src="detail4/JAPAN-1.png"
+                class="w-full h-auto object-cover rounded-xl gallery-item-img"
+                alt="Design 1"
+              />
+            </div>
+          </div>
+
+          <div data-aos="fade-up" data-aos-delay="100">
+            <div class="gallery-item rounded-xl premium-shadow">
+              <img
+                src="detail4/JAPAN 2.png"
+                class="w-full h-auto object-cover rounded-xl gallery-item-img"
+                alt="Design 2"
+              />
+            </div>
+          </div>
+
+          <div data-aos="fade-up" data-aos-delay="200">
+            <div class="gallery-item rounded-xl premium-shadow">
+              <img
+                src="detail4/Frame 18.png"
+                class="w-full h-auto object-cover rounded-xl gallery-item-img"
+                alt="Design 3"
+              />
+            </div>
+          </div>
+
+          <div data-aos="fade-up" data-aos-delay="300">
+            <div class="gallery-item rounded-xl premium-shadow">
+              <img
+                src="detail4/JAPAN.png"
+                class="w-full h-auto object-cover rounded-xl gallery-item-img"
+                alt="Design 4"
+              />
+            </div>
+          </div>
+
+          <div data-aos="fade-up" data-aos-delay="400">
+            <div class="gallery-item rounded-xl premium-shadow">
+              <img
+                src="detail4/Frame 19.png"
+                class="w-full h-auto object-cover rounded-xl gallery-item-img"
+                alt="Design 5"
+              />
+            </div>
+          </div>
+
+          <div data-aos="fade-up" data-aos-delay="500">
+            <div class="gallery-item rounded-xl premium-shadow">
+              <img
+                src="detail4/JAPAN 3.jpg"
+                class="w-full h-auto object-cover rounded-xl gallery-item-img"
+                alt="Design 6"
+              />
+            </div>
+          </div>
+        </div>
+
+        <div class="text-center mt-16" data-aos="zoom-in" data-aos-delay="600">
+          <a
+  href="index.html#portfolio"
+  class="inline-block px-8 py-3 border border-gray-900 text-gray-900 rounded-lg font-semibold transition-colors duration-300 hover:bg-gray-900 hover:text-white btn-outline-custom"
+>
+  Lihat Desain Lainnya
+</a>
+
+        </div>
+      </div>
+    </section>
+
+    <footer class="bg-gray-900 py-8">
+      <div class="container mx-auto px-6 text-center text-gray-400">
+        <p class="text-sm">&copy; 2025 Dheva Ibra. All Rights Reserved.</p>
+      </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+      AOS.init({
+        duration: 900,
+        once: true,
+      });
+
+      // --- JavaScript for Navbar Interactivity (Consistent) ---
+
+      const mobileMenuButton = document.getElementById("mobile-menu-button");
+      const mobileMenu = document.getElementById("mobile-menu");
+      const menuIcon = document.getElementById("menu-icon");
+      const closeIcon = document.getElementById("close-icon");
+
+      // 1. Mobile Menu Toggle
+      mobileMenuButton.addEventListener("click", () => {
+        const isMenuOpen = mobileMenu.classList.contains("max-h-80");
+
+        // Toggle menu state
+        if (isMenuOpen) {
+          mobileMenu.classList.remove("max-h-80");
+          mobileMenu.classList.add("max-h-0");
+          // Toggle icons
+          menuIcon.classList.remove("hidden");
+          closeIcon.classList.add("hidden");
+        } else {
+          mobileMenu.classList.remove("max-h-0");
+          mobileMenu.classList.add("max-h-80");
+          // Toggle icons
+          menuIcon.classList.add("hidden");
+          closeIcon.classList.remove("hidden");
+        }
+      });
+
+      // 2. Close mobile menu when a link is clicked
+      mobileMenu.querySelectorAll("a").forEach((link) => {
+        link.addEventListener("click", () => {
+          mobileMenu.classList.remove("max-h-80");
+          mobileMenu.classList.add("max-h-0");
+          menuIcon.classList.remove("hidden");
+          closeIcon.classList.add("hidden");
+        });
+      });
+    </script>
+  </body>
+</html>

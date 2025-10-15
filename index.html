@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Portfolio - Dheva Ibra</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+
+    <style>
+      /* Custom utility classes to emulate the modern, clean aesthetic */
+      :root {
+        --primary-color: #2563eb; /* Blue-600 */
+        --text-color: #1f2937; /* Gray-800 */
+      }
+
+      body {
+        font-family: "Inter", sans-serif;
+        background-color: #fefefe; /* Near-white background for an airy feel */
+        color: #1f2937; /* Darker text for readability */
+      }
+
+      /* Modern, subtle shadow for 'floating' elements (Apple-like) */
+      .soft-shadow {
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      }
+
+      /* Custom button hover effect */
+      .btn-primary-custom:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(37, 99, 235, 0.4);
+      }
+      .btn-outline-custom:hover {
+        background-color: #f3f4f6;
+      }
+
+      /* Hover effect for portfolio cards (more pronounced) */
+      .portfolio-card-hover {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+      .portfolio-card-hover:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+      }
+
+      /* NAV BAR: Custom Hover Underline Effect */
+      .nav-link-custom {
+        position: relative;
+        padding-bottom: 2px;
+        transition: color 0.3s ease;
+      }
+      .nav-link-custom::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        width: 0;
+        height: 2px;
+        background-color: var(--primary-color);
+        transition: width 0.3s ease, left 0.3s ease;
+      }
+      .nav-link-custom:hover::after,
+      .nav-link-custom.active::after {
+        width: 100%;
+        left: 0;
+      }
+      /* Ensure the active link stays colored on desktop */
+      .nav-link-custom.active {
+        color: var(--primary-color);
+      }
+      /* Smooth mobile menu transition */
+      #mobile-menu {
+        transition: max-height 0.3s ease-in-out;
+      }
+    </style>
+  </head>
+
+  <body>
+    <nav
+      id="main-navbar"
+      class="fixed top-0 left-0 right-0 z-50 bg-white/70 backdrop-blur-md soft-shadow transition-all duration-300"
+    >
+      <div
+        class="container mx-auto px-6 py-4 flex justify-between items-center"
+      >
+        <a
+          href="#home"
+          class="text-2xl font-extrabold tracking-wider text-gray-900 transition-colors hover:text-blue-600"
+        >
+          Dheva <span class="text-blue-600">Ibra</span>
+        </a>
+
+        <button
+          id="mobile-menu-button"
+          class="lg:hidden p-2 text-gray-700 hover:bg-gray-100 rounded-lg transition-colors duration-200"
+        >
+          <svg
+            id="menu-icon"
+            class="w-6 h-6"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M4 6h16M4 12h16M4 18h16"
+            ></path>
+          </svg>
+          <svg
+            id="close-icon"
+            class="w-6 h-6 hidden"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M6 18L18 6M6 6l12 12"
+            ></path>
+          </svg>
+        </button>
+
+        <div class="hidden lg:flex space-x-8 items-center">
+          <a
+            href="#home"
+            class="nav-link-custom text-gray-700 font-medium active"
+            >Home</a
+          >
+          <a href="#about" class="nav-link-custom text-gray-700 font-medium"
+            >Tentang</a
+          >
+          <a href="#portfolio" class="nav-link-custom text-gray-700 font-medium"
+            >Portfolio</a
+          >
+          <a href="#contact" class="nav-link-custom text-gray-700 font-medium"
+            >Kontak</a
+          >
+        </div>
+      </div>
+
+      <div
+        id="mobile-menu"
+        class="lg:hidden absolute w-full bg-white/95 backdrop-blur-sm soft-shadow overflow-hidden max-h-0"
+      >
+        <div class="flex flex-col space-y-1 p-4">
+          <a
+            href="#home"
+            class="block py-2 px-3 text-gray-800 hover:text-blue-600 font-medium transition-colors rounded-lg hover:bg-gray-50"
+            >Home</a
+          >
+          <a
+            href="#about"
+            class="block py-2 px-3 text-gray-800 hover:text-blue-600 font-medium transition-colors rounded-lg hover:bg-gray-50"
+            >Tentang</a
+          >
+          <a
+            href="#portfolio"
+            class="block py-2 px-3 text-gray-800 hover:text-blue-600 font-medium transition-colors rounded-lg hover:bg-gray-50"
+            >Portfolio</a
+          >
+          <a
+            href="#contact"
+            class="block py-2 px-3 text-gray-800 hover:text-blue-600 font-medium transition-colors rounded-lg hover:bg-gray-50"
+            >Kontak</a
+          >
+        </div>
+      </div>
+    </nav>
+    <section
+      id="home"
+      class="pt-32 pb-24 text-white text-center min-h-screen flex items-center justify-center relative overflow-hidden"
+      style="background-image: url('Slide\ 4_3\ -\ 1.png')"
+      data-aos="fade-up"
+    >
+      <div class="absolute inset-0 bg-gray-900/70"></div>
+
+      <div class="container mx-auto px-6 relative z-10">
+        <p
+          class="text-lg font-medium mb-3 opacity-90"
+          data-aos="fade-up"
+          data-aos-delay="200"
+        >
+          Hello, I'm
+        </p>
+        <h1
+          class="text-6xl md:text-8xl font-extrabold leading-tight tracking-tighter mb-4 drop-shadow-lg"
+          data-aos="fade-up"
+          data-aos-delay="300"
+        >
+          Dheva Ibra Hubie Iswara
+        </h1>
+        <p
+          class="text-xl md:text-2xl font-light max-w-2xl mx-auto mb-8 opacity-90 drop-shadow-md"
+          data-aos="fade-up"
+          data-aos-delay="400"
+        >
+          Seorang Desainer Grafis dan Web Developer yang mencintai desain
+          minimalis dan interaktif.
+        </p>
+        <a
+          href="#portfolio"
+          class="inline-block px-8 py-3 bg-white text-blue-600 rounded-full font-bold text-lg soft-shadow transition-all duration-300 btn-primary-custom"
+          data-aos="fade-up"
+          data-aos-delay="500"
+          >Lihat Karya Saya</a
+        >
+      </div>
+    </section>
+
+    <section id="about" class="py-20 md:py-32 bg-white">
+      <div class="container mx-auto px-6 max-w-6xl">
+        <div class="flex flex-col md:flex-row items-center gap-12">
+          <div class="w-full md:w-1/3 text-center" data-aos="fade-right">
+            <img
+              src="profil.jpg"
+              alt="Profile"
+              class="w-56 h-56 object-cover mx-auto rounded-full soft-shadow border-4 border-gray-100 mb-6"
+            />
+          </div>
+
+          <div class="w-full md:w-2/3" data-aos="fade-left">
+            <h2 class="text-4xl font-bold mb-6 text-gray-900">Tentang Saya</h2>
+            <p class="mb-4 text-lg text-gray-700">
+              Saya adalah lulusan D3 Sistem Informasi Universitas Telkom dengan
+              keahlian dalam desain <strong>UI/UX menggunakan Figma</strong>,
+              serta mampu membuat
+              <strong>poster, banner, feed Instagram</strong>,
+            </p>
+
+            <p class="mb-6 text-lg text-gray-700">
+              Saya menyukai tantangan kreatif dan selalu berusaha menciptakan
+              desain yang tidak hanya menarik secara visual, tetapi juga
+              fungsional dan ramah pengguna.
+            </p>
+
+            <div class="mt-8" data-aos="fade-up" data-aos-delay="100">
+              <h5 class="text-xl font-semibold mb-4 text-gray-800">
+                Tools yang Saya Kuasai:
+              </h5>
+              <div class="flex flex-wrap gap-6 md:gap-8">
+                <div
+                  class="flex items-center p-3 bg-gray-50 rounded-lg transition-transform hover:scale-105"
+                >
+                  <img
+                    src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg"
+                    width="30"
+                    height="30"
+                    alt="Figma"
+                  />
+                  <span class="ms-3 font-bold text-gray-800">Figma</span>
+                </div>
+                <div
+                  class="flex items-center p-3 bg-gray-50 rounded-lg transition-transform hover:scale-105"
+                >
+                  <img
+                    src="https://images-eds-ssl.xboxlive.com/image?url=4rt9.lXDC4H_93laV1_eHHFT949fUipzkiFOBH3fAiZZUCdYojwUyX2aTonS1aIwMrx6NUIsHfUHSLzjGJFxxo4K81Ei7WzcnqEk8W.Mgwbbudd0PM9n_we63W8bVGWGHZSptatpya2SvBPFLX_bXokCTfM4U1IPm.A0S8_gyIk-&format=source"
+                    width="30"
+                    height="30"
+                    alt="Canva"
+                  />
+                  <span class="ms-3 font-bold text-gray-800">Canva</span>
+                </div>
+                <div
+                  class="flex items-center p-3 bg-gray-50 rounded-lg transition-transform hover:scale-105"
+                >
+                  <img
+                    src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAgVBMVEX///8AAADu7u6xsbGlpaXn5+f19fXy8vL7+/v4+Pjz8/PLy8vV1dWgoKDf3994eHgZGRmYmJhlZWVtbW3Y2NhPT0+pqaksLCyMjIwVFRU5OTkLCwvj4+PDw8OEhIRCQkK6urpaWloiIiJNTU0wMDBAQEBycnJXV1eBgYEeHh5oaGiXcxFPAAAE+klEQVR4nO2cfXuyIBSHp5UvKyu31ix7cb2sbd//Az7Z5lUgHrQB4p7f/eds4n2BAocDDw8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMIrvKuSxbRseN5vsPx2F7E6bYdi21ZXxZKrSruAQ+22bfRNsdOhdSPtty2XMXrUJnnkhqjGYRyYEM51+ZxazioLD+cJx3O4LnluqUNGb7/KLA+2CI+2CjjMtV9Rj/+fV0G7oKe0hqthzpYb9XXFJu+HEhKDjMF/UILrpmnQbmmijF64f1DBiLug2/DJlGP8U6EfcBc2GK1OCzuEygHPj0tBJs2HfmKEzPNdfvCv/XbPhE1fcpK+K6Jm7dRLEC5G5XkOPHa4tlY4vZilz80+hn25DlykrVTyjm4mVWjRMVN+efwdaN8xU3z6uIfjqqS6VgTUcqr493/UJeBqrLpRlwJS2Vn17qeHbSHWRPKxhT/XtJYanqnmjQlhD50lpkQM6NPKkvf4uD8EX+6Ws2JUNfgJDVUWvPki/Z0N+QkMVr7/Mz8D7VyA0/K3jgJ5U6+4fuIepeoyXux0H73T9GfUjDO+txzFdf++G/c4TtpR4nLfGYxyJ38S435k1+UjNHMf8jNACv4d82k0+1kttxzH9/k1WOi1oPNpxX8txRUe0JvoD2ySeOLxQsJU6jumJYNt+OY8xGfmm2+qMfv8+LPDL8SWOlTOrEd0+N5b45fgR3VaFjiO6fdrklxPS87my4+yN9jOwNNiYiBoCOEvGcXQi/T4sWcHnCSNyxXuZFT8ckfWXJjbW3w9hn3TcZsH5R0PSb5FY9v7xeHPS8ZjRfqntfjk/S+x3EVvcPhnm5DenksS6XC8Cuq2KSBO9AWzlBL1DE7+pLRleTQh7y7p+u868fxxePcdF1MH6Kwgy+Xc16tj7V0KSc7O3KIv0LtZbWRV+9jrsGMj9cl7nXW2nWS2/i2O/i47Zsa5fNx2z2n1hwTQK2n7oBtToI0REHfnmBFmj8dotaRf6fslYbdmjv6/TyPLxWyDzC/M63lO/2Vk9BqfnE4es+JasSUd75xn03P41u/3tkO4rYwu/OQE9r7/G2QqGL7SjZfN9SWym7JczpGOmNs0ZPVkMseofZXFFSxxlMdI1NVah1y6scAwjun1KM/osX78I6PWYY62MRYsdPdpvXzsjU7LO1locfEjuHK1eFxUhW0tsJVfBowSb+eWM6PXuNhzd6sepn2dyi2xN37hjpaE8/6IKy/IyKvLa7qu/gjGdu/Bu1FFoePp1zr4sP8pg/pfAsHm+noiZLY4lQzV+OZbkYXKGJ6Xp1yva0Uwureb9FpJdQV8G+o6298x8aa9H1lD5vqcaO1SfNfcdFuxdO+gN5/xv+w9TxSsr9TaK6zUM2eDoVmmQc8VGDhat7AMutaPNvKeIOd8bboKkhb3chvfjuyLHP3Omwvd+30FSCjrrnmrU+typoPhQu4lhQ2Nnm1yjbT7rqH26SE9zlBHflundtlXtho9azmnjOXKl+tczTv7GOVFpWcMvAu0Gghr6z/pyhPNO9/ssJRNhG+2KVRPrywYPI4GpkdbzvraEQxDF1RdV4mk88cuQgpTZ832Z6xJ2NqweFgx671u155fuJ2vbMjICX+EhtH7X8vgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAv8o/T2pLRPNc9l4AAAAASUVORK5CYII="
+                    width="30"
+                    height="30"
+                    alt="CapCut"
+                  />
+                  <span class="ms-3 font-bold text-gray-800">CapCut</span>
+                </div>
+              </div>
+            </div>
+
+            <a
+              href="#contact"
+              class="inline-block px-8 py-3 bg-blue-600 text-white rounded-lg font-bold text-base mt-8 transition-all duration-300 soft-shadow btn-primary-custom"
+              >Hubungi Saya</a
+            >
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="portfolio" class="py-20 md:py-32 bg-gray-50">
+      <div class="container mx-auto px-6 max-w-7xl text-center">
+        <h2 class="text-4xl font-bold mb-4 text-gray-900" data-aos="fade-up">
+          Portfolio
+        </h2>
+        <p
+          class="text-xl text-gray-600 mb-12 max-w-2xl mx-auto"
+          data-aos="fade-up"
+          data-aos-delay="100"
+        >
+          Beberapa karya desain saya klik tombol
+          <strong>"Lihat Selengkapnya"</strong> untuk melihat lebih banyak.
+        </p>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+          <!-- CARD 1 -->
+          <div class="group" data-aos="zoom-in-up">
+            <div
+              class="bg-white rounded-xl overflow-hidden soft-shadow portfolio-card-hover"
+            >
+              <div class="relative overflow-hidden">
+                <img
+                  src="cover web 1.png"
+                  class="w-full h-auto object-cover transition duration-500 group-hover:scale-[1.02]"
+                  alt="Project 1"
+                />
+                <div
+                  class="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity"
+                ></div>
+              </div>
+
+              <div class="p-6 text-left">
+                <h5 class="text-xl font-semibold mb-2 text-gray-900">
+                  Feed Instagram Design
+                </h5>
+                <a
+                  href="portfolio1.html"
+                  class="inline-block px-5 py-2 text-blue-600 border border-blue-600 rounded-full font-medium text-sm mt-4 transition-all duration-300 hover:bg-blue-600 hover:text-white btn-outline-custom"
+                  >Lihat Selengkapnya</a
+                >
+              </div>
+            </div>
+          </div>
+
+          <!-- CARD 2 -->
+          <div class="group" data-aos="zoom-in-up" data-aos-delay="100">
+            <div
+              class="bg-white rounded-xl overflow-hidden soft-shadow portfolio-card-hover"
+            >
+              <div class="relative overflow-hidden">
+                <img
+                  src="cover web 2.png"
+                  class="w-full h-auto object-cover transition duration-500 group-hover:scale-[1.02]"
+                  alt="Project 2"
+                />
+                <div
+                  class="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity"
+                ></div>
+              </div>
+              <div class="p-6 text-left">
+                <h5 class="text-xl font-semibold mb-2 text-gray-900">
+                  Feed Instagram Design
+                </h5>
+                <a
+                  href="portfolio2.html"
+                  class="inline-block px-5 py-2 text-blue-600 border border-blue-600 rounded-full font-medium text-sm mt-4 transition-all duration-300 hover:bg-blue-600 hover:text-white btn-outline-custom"
+                  >Lihat Selengkapnya</a
+                >
+              </div>
+            </div>
+          </div>
+
+          <!-- CARD 3 -->
+          <div class="group" data-aos="zoom-in-up" data-aos-delay="200">
+            <div
+              class="bg-white rounded-xl overflow-hidden soft-shadow portfolio-card-hover"
+            >
+              <div class="relative overflow-hidden">
+                <img
+                  src="cover web 3.png"
+                  class="w-full h-auto object-cover transition duration-500 group-hover:scale-[1.02]"
+                  alt="Project 3"
+                />
+                <div
+                  class="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity"
+                ></div>
+              </div>
+              <div class="p-6 text-left">
+                <h5 class="text-xl font-semibold mb-2 text-gray-900">
+                  Sports Instagram Feed Design
+                </h5>
+                <a
+                  href="portfolio3.html"
+                  class="inline-block px-5 py-2 text-blue-600 border border-blue-600 rounded-full font-medium text-sm mt-4 transition-all duration-300 hover:bg-blue-600 hover:text-white btn-outline-custom"
+                  >Lihat Selengkapnya</a
+                >
+              </div>
+            </div>
+          </div>
+
+          <!-- CARD 4 -->
+          <div class="group" data-aos="zoom-in-up">
+            <div
+              class="bg-white rounded-xl overflow-hidden soft-shadow portfolio-card-hover"
+            >
+              <div class="relative overflow-hidden">
+                <img
+                  src="cover web 4.png"
+                  class="w-full h-auto object-cover transition duration-500 group-hover:scale-[1.02]"
+                  alt="Project 4"
+                />
+                <div
+                  class="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity"
+                ></div>
+              </div>
+              <div class="p-6 text-left">
+                <h5 class="text-xl font-semibold mb-2 text-gray-900">
+                  Sports Instagram Feed Design
+                </h5>
+                <a
+                  href="portfolio4.html"
+                  class="inline-block px-5 py-2 text-blue-600 border border-blue-600 rounded-full font-medium text-sm mt-4 transition-all duration-300 hover:bg-blue-600 hover:text-white btn-outline-custom"
+                  >Lihat Selengkapnya</a
+                >
+              </div>
+            </div>
+          </div>
+
+          <!-- CARD 5 -->
+          <div class="group" data-aos="zoom-in-up" data-aos-delay="100">
+            <div
+              class="bg-white rounded-xl overflow-hidden soft-shadow portfolio-card-hover"
+            >
+              <div class="relative overflow-hidden">
+                <img
+                  src="cover web 5.png"
+                  class="w-full h-auto object-cover transition duration-500 group-hover:scale-[1.02]"
+                  alt="Project 5"
+                />
+                <div
+                  class="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity"
+                ></div>
+              </div>
+              <div class="p-6 text-left">
+                <h5 class="text-xl font-semibold mb-2 text-gray-900">
+                  Feed Instagram Design
+                </h5>
+                <a
+                  href="portfolio5.html"
+                  class="inline-block px-5 py-2 text-blue-600 border border-blue-600 rounded-full font-medium text-sm mt-4 transition-all duration-300 hover:bg-blue-600 hover:text-white btn-outline-custom"
+                  >Lihat Selengkapnya</a
+                >
+              </div>
+            </div>
+          </div>
+
+          <!-- CARD 6 -->
+          <div class="group" data-aos="zoom-in-up" data-aos-delay="200">
+            <div
+              class="bg-white rounded-xl overflow-hidden soft-shadow portfolio-card-hover"
+            >
+              <div class="relative overflow-hidden">
+                <img
+                  src="cover web 6.png"
+                  class="w-full h-auto object-cover transition duration-500 group-hover:scale-[1.02]"
+                  alt="Project 6"
+                />
+                <div
+                  class="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity"
+                ></div>
+              </div>
+              <div class="p-6 text-left">
+                <h5 class="text-xl font-semibold mb-2 text-gray-900">
+                  Others Design
+                </h5>
+                <a
+                  href="portfolio6.html"
+                  class="inline-block px-5 py-2 text-blue-600 border border-blue-600 rounded-full font-medium text-sm mt-4 transition-all duration-300 hover:bg-blue-600 hover:text-white btn-outline-custom"
+                  >Lihat Selengkapnya</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Button PDF di bagian bawah -->
+        <div class="mt-16 text-center" data-aos="fade-up" data-aos-delay="300">
+          <a
+            href="https://drive.google.com/file/d/1EJnXCe3DU8A_kF3GGOQmyL3ITw9L_Ndg/view"
+            target="_blank"
+            class="inline-block px-8 py-3 bg-blue-600 text-white rounded-full font-semibold shadow-md transition-all duration-300 hover:bg-blue-700 hover:scale-105"
+          >
+            📄 Lihat Portfolio PDF
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="py-20 md:py-32 bg-white">
+      <div
+        class="container mx-auto px-6 max-w-4xl text-center"
+        data-aos="fade-up"
+      >
+        <h2 class="text-4xl font-bold mb-4 text-gray-900">Kontak</h2>
+        <p class="text-xl text-gray-700 mb-8">
+          Ingin bekerja sama atau berdiskusi proyek? Hubungi saya melalui:
+        </p>
+
+        <div class="flex flex-col sm:flex-row justify-center gap-4 mt-8">
+          <a
+            href="#"
+            class="inline-block px-8 py-3 border border-gray-900 text-gray-900 rounded-lg font-semibold transition-colors duration-300 hover:bg-gray-900 hover:text-white btn-outline-custom"
+            >Email Saya</a
+          >
+          <a
+            href="https://linkedin.com"
+            class="inline-block px-8 py-3 border border-blue-600 text-blue-600 rounded-lg font-semibold transition-colors duration-300 hover:bg-blue-600 hover:text-white btn-outline-custom"
+            >LinkedIn</a
+          >
+        </div>
+      </div>
+    </section>
+
+    <footer class="bg-gray-800 py-6">
+      <div class="container mx-auto px-6 text-center text-gray-400">
+        <p>&copy; 2025 Dheva Ibra. All Rights Reserved.</p>
+      </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+      AOS.init({
+        duration: 800, // animation duration
+        once: true, // whether animation should happen only once - default
+      });
+
+      // --- JavaScript for Navbar Interactivity ---
+
+      const mobileMenuButton = document.getElementById("mobile-menu-button");
+      const mobileMenu = document.getElementById("mobile-menu");
+      const menuIcon = document.getElementById("menu-icon");
+      const closeIcon = document.getElementById("close-icon");
+      const navLinks = document.querySelectorAll("#main-navbar a");
+      const sections = document.querySelectorAll("section");
+
+      // 1. Mobile Menu Toggle
+      mobileMenuButton.addEventListener("click", () => {
+        const isMenuOpen = mobileMenu.classList.contains("max-h-80"); // Use a larger max-height for content
+
+        if (isMenuOpen) {
+          mobileMenu.classList.remove("max-h-80");
+          mobileMenu.classList.add("max-h-0");
+          menuIcon.classList.remove("hidden");
+          closeIcon.classList.add("hidden");
+        } else {
+          mobileMenu.classList.remove("max-h-0");
+          mobileMenu.classList.add("max-h-80");
+          menuIcon.classList.add("hidden");
+          closeIcon.classList.remove("hidden");
+        }
+      });
+
+      // Close mobile menu when a link is clicked
+      mobileMenu.querySelectorAll("a").forEach((link) => {
+        link.addEventListener("click", () => {
+          mobileMenu.classList.remove("max-h-80");
+          mobileMenu.classList.add("max-h-0");
+          menuIcon.classList.remove("hidden");
+          closeIcon.classList.add("hidden");
+        });
+      });
+
+      // 2. Scroll-based Active Link Highlighting
+      const setActiveLink = (id) => {
+        navLinks.forEach((link) => link.classList.remove("active"));
+        const activeLink = document.querySelector(
+          `#main-navbar a[href="#${id}"]`
+        );
+        if (activeLink) {
+          activeLink.classList.add("active");
+        }
+      };
+
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              setActiveLink(entry.target.id);
+            }
+          });
+        },
+        {
+          rootMargin: "-50% 0px -50% 0px", // Triggers when section is in the middle third of the viewport
+        }
+      );
+
+      sections.forEach((section) => {
+        observer.observe(section);
+      });
+
+      // Handle initial load state for 'Home'
+      if (document.getElementById("home")) {
+        setActiveLink("home");
+      }
+    </script>
+  </body>
+</html>
